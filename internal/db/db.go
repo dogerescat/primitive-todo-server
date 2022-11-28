@@ -7,4 +7,5 @@ import (
 
 type DB interface {
 	PutTodo(ctx context.Context, t *todo.Todo) error
+	GetAllTodos(ctx context.Context) ([]*todo.Todo, error)
 }

@@ -19,3 +19,16 @@ func (m *memoryDB) PutTodo(ctx context.Context, t *todo.Todo) error {
 	m.lock.Unlock()
 	return nil
 }
+
+func (m *memoryDB) GetAllTodos(ctx context.Context) ([]*todo.Todo, error) {
+	m.lock.RLock()
+	defer m.lock.RUnlock()
+	result := make([]*todo.Todo, len(m.db))
+	i := 0
+	for _, t := range m.db {
+		result[i] = t
+		i++
+	}
+
+	return result, nil
+}
