@@ -13,6 +13,8 @@ type Server struct {
 
 func NewServer(port int, d db.DB) *Server {
 	mux := http.NewServeMux()
+	mux.Handle("/create", &createHandler{db: d})
+	mux.Handle("/list", &listHandler{db: d})
 	return &Server{
 		server: &http.Server{
 			Addr:    fmt.Sprintf(":%d", port),

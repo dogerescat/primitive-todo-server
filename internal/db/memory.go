@@ -13,6 +13,10 @@ type memoryDB struct {
 	lock sync.RWMutex
 }
 
+func NewMemoryDB() *memoryDB {
+	return &memoryDB{db: map[string]*todo.Todo{}}
+}
+
 func (m *memoryDB) PutTodo(ctx context.Context, t *todo.Todo) error {
 	m.lock.Lock()
 	m.db[t.ID] = t
