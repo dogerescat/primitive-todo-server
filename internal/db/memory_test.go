@@ -11,7 +11,7 @@ import (
 func TestPutTodo(t *testing.T) {
 	t.Parallel()
 	todo1 := &todo.Todo{
-		ID:    "",
+		ID:    "ddd046bc-7035-412b-9009-4f75d62241a4",
 		Title: "code reading",
 	}
 	tests := map[string]struct {
